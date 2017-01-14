@@ -3,6 +3,7 @@ var models = require('../models');
 module.exports = {
   messages: {
     get: function (req, res) {
+
       // console.log('our get request from controllers/index.js');
       // var b = {
       //   username: 'Cynthia B',
@@ -14,9 +15,12 @@ module.exports = {
       // //console.log(req);
       //res.json(b);
       //
-      // models.messages.get(function(data) {
-        //res.send(data);
-      // })
+      models.messages.get(function(error, data) {
+        if (error) {
+          res.status(404).send(error);
+        }
+          res.status(200).send(data);
+      });
       //res.send();
     }, // a function which handles a get request for all messages
     post: function (req, res) {
@@ -35,7 +39,13 @@ module.exports = {
   users: {
     // Ditto as above
     get: function (req, res) {
-
+      models.users.get(function(error, data) {
+        if (error) {
+          res.status(404).send(error);
+        } else {
+          res.status(200).send(data);
+        }
+      });
     },
     post: function (req, res) {
       console.log('LINE 41 CONTROLLERS POST', req.body);
