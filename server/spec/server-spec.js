@@ -12,7 +12,7 @@ describe('Persistent Node Chat Server', function() {
     dbConnection = mysql.createConnection({
       user: 'root',
       password: '',
-      database: 'chat'
+      database: 'chat' //*****//
     });
     dbConnection.connect();
 

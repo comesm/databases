@@ -12,13 +12,13 @@ var db = new Sequelize('chatter', 'root', '');
  * See http://sequelizejs.com for other datatypes you can use besides STRING. */
 var User = db.define('User', {
   username: Sequelize.STRING
-});
+}, {timestamps: false});
 
 var Message = db.define('Message', {
-  userid: Sequelize.INTEGER,
-  text: Sequelize.STRING,
+  user_id: Sequelize.INTEGER,
+  message: Sequelize.STRING,
   roomname: Sequelize.STRING
-});
+}, {timestamps: false});
 
 /* Sequelize comes with built in support for promises
  * making it easy to chain asynchronous operations together */

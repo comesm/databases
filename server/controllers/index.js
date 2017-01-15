@@ -1,27 +1,15 @@
-var models = require('../models');
+var models = require('../models/index');
 
 module.exports = {
   messages: {
     get: function (req, res) {
-
-      // console.log('our get request from controllers/index.js');
-      // var b = {
-      //   username: 'Cynthia B',
-      //   text: 'hi its working',
-      //   roomname:  'lobby'
-      // };
-      // var str = JSON.stringify(b);
-      // res.status(200).send(str);
-      // //console.log(req);
-      //res.json(b);
-      //
       models.messages.get(function(error, data) {
         if (error) {
           res.status(404).send(error);
-        }
+        } else {
           res.status(200).send(data);
+        }
       });
-      //res.send();
     }, // a function which handles a get request for all messages
     post: function (req, res) {
       console.log('LINE 23 CONTROLLERS POST', req.body);
